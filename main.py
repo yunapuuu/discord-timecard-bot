@@ -1,5 +1,11 @@
 import discord
 from discord import app_commands
+from dotenv import load_dotenv
+import os
+
+# 環境変数の読み込み
+load_dotenv()
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 # ボットの設定
 intents = discord.Intents.default()
@@ -11,7 +17,7 @@ tree = app_commands.CommandTree(client)
 async def on_ready():
     print(f'ボットが起動しました: {client.user}')
     try:
-        synced = await tree.sync()  # スラッシュコマンドを同期
+        synced = await tree.sync(guild=discord.Object(id='1361387017715322982'))  # ギルドコマンドを同期
         print(f'コマンドを同期しました: {synced}')
     except Exception as e:
         print(f'同期エラー: {e}')
@@ -38,10 +44,8 @@ async def start(interaction: discord.Interaction):
 async def on_interaction(interaction: discord.Interaction):
     if interaction.type == discord.InteractionType.component and interaction.data["custom_id"] == "team_select":
         selected_team = interaction.data["values"][0]
-        # Webhook でメッセージ送信（必要に応じて）
         await interaction.response.send_message(f"チーム{selected_team}練習開始します！を送信しました！", ephemeral=True)
-        # チャンネルにメッセージ送信（Webhook の代わり）
         await interaction.channel.send(f"チーム{selected_team}練習開始します！")
 
 # ボットを起動
-client.run('YOUR_BOT_TOKEN')  # トークンを設定
+client.run(DISCORD_TOKEN)
