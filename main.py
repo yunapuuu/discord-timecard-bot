@@ -47,6 +47,11 @@ async def clear_guild_commands():
     )
     print(f'ギルドコマンドクリア: ステータスコード={response.status_code}, レスポンス={response.json()}')
 
+# 24時間稼働のエンドポイント作成
+@app.route('/keep_alive', methods=['GET'])
+def keep_alive():
+    return jsonify({'message': 'Alive'}), 200
+
 # ボット起動時の処理
 @client.event
 async def on_ready():
