@@ -2,9 +2,11 @@ import discord
 from discord import app_commands, ui
 import os
 import requests
+from dotenv import load_dotenv
 
 # 環境変数の読み込み
-DISCORD_TOKEN = os.environ.get('DISCORD_TOKEN')
+load_dotenv()
+DISCORD_TOKEN = os.environ('DISCORD_TOKEN')
 
 # ボットの設定
 intents = discord.Intents.default()
