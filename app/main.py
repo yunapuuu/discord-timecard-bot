@@ -1,6 +1,5 @@
 import discord
 from discord import app_commands, ui
-from dotenv import load_dotenv
 import os
 import requests
 
