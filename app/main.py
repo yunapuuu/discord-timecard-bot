@@ -6,7 +6,7 @@ import requests
 
 # 環境変数の読み込み
 load_dotenv()
-DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+DISCORD_TOKEN = os.environ.get('DISCORD_TOKEN')
 
 # ボットの設定
 intents = discord.Intents.default()
