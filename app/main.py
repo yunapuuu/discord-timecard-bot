@@ -80,6 +80,7 @@ async def start(interaction: discord.Interaction):
             discord.SelectOption(label="チームA", value="A"),
             discord.SelectOption(label="チームB", value="B"),
             discord.SelectOption(label="チームC", value="C"),
+            discord.SelectOption(label="チームD", value="D"),
         ]
     )
     view = discord.ui.View()
@@ -101,6 +102,7 @@ async def end(interaction: discord.Interaction):
             discord.SelectOption(label="チームA", value="A"),
             discord.SelectOption(label="チームB", value="B"),
             discord.SelectOption(label="チームC", value="C"),
+            discord.SelectOption(label="チームD", value="D"),
         ]
     )
     view = discord.ui.View()
